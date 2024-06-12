@@ -10,7 +10,7 @@ Currently, two official plugins are available:
 
 1: Instruction to run application:
 
-Download the source code in the system.
-Install npm module in the system.
-Go in the wapp folder and execute commanr 'npm run dev' in the terminal
-Open the application on http://localhost:5173/
+* Download the source code in the system.
+* Install npm module in the system.
+* Go in the wapp folder and execute commanr 'npm run dev' in the terminal
+* Open the application on http://localhost:5173/
