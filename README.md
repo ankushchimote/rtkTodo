@@ -12,5 +12,5 @@ Currently, two official plugins are available:
 
 * Download the source code in the system.
 * Install npm module in the system.
-* Go in the wapp folder and execute commanr 'npm run dev' in the terminal
+* Open VScode Editor and then go in the rtkTodo folder and execute command 'npm run dev' in the terminal
 * Open the application on http://localhost:5173/
