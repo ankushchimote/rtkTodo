@@ -34,7 +34,7 @@ const TodoList = () => {
   }, []);
 
   const handleAddTodo = (task) => {
-    if (newTask.trim().length === 0) {
+    if (newTask.trim().length === 0) { //task
       alert("Please enter a task");
     } else {
       dispatch(
@@ -71,7 +71,7 @@ const TodoList = () => {
   const sortTodoList = todoList.filter((todo) => {
     if (sortCriteria === "All") return true;
     if (sortCriteria === "Completed" && todo.completed) return true;
-    if (sortCriteria === "Not Completed && !todo.completed") return true;
+    if (sortCriteria === "Not Completed" && !todo.completed) return true;
     return false;
   });
 
@@ -83,22 +83,31 @@ const TodoList = () => {
     <>
       <div>
         {showModal && (
-          <div className="fixed w-full left-0 top-0 h-full bg-transparent flex items-center justify-center">
-            <div className="bg-yellow-400 p-8 rounded-md text-center">
+          <div className="fixed w-full left-0 top-0 h-full bg-[#000000D8] flex items-center justify-center">
+            <div className="bg-white p-8 rounded-md text-center">
               <input
                 type="text"
-                className="bg-green-300 border p-2 rounded-md outline-none mb-8"
+                className="bg-white border p-2 rounded-md outline-none mb-8"
                 value={newTask}
                 onChange={(e) => setNewTask(e.target.value)}
                 placeholder={
                   currentTodo ? "Update your task here" : "Enter task here"
                 }
               />
-              <div className="texxt-center">
+              <div className="flex justify-between gap-5">
                 {currentTodo ? (
                   <>
                     <button
-                      className="text-center"
+                      className="bg-[#1A2E35] rounded-md text-white py-3 px-8"
+                      onClick={() => {
+                        setShowModal(false);
+                        handleUpdateTodoList(currentTodo.id, newTask);
+                      }}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      className="text-center bg-[#FF4F5A] rounded-md text-white py-3 px-10"
                       onClick={() => {
                         setShowModal(false);
                         handleUpdateTodoList(currentTodo.id, newTask);
@@ -108,23 +117,25 @@ const TodoList = () => {
                     </button>
                   </>
                 ) : (
+                  <>
                   <div className="flex justify-between gap-5">
                     <button
-                      className="bg-green-500 rounded-md text-white py-3 px-10"
+                      className="bg-[#1A2E35] rounded-md text-white py-3 px-10"
                       onClick={() => setShowModal(false)}
                     >
                       Cancel
                     </button>
                     <button
-                      className="bg-red-300 rounded-md text-white py-3 px-10"
+                      className="bg-[#FF4F5A] rounded-md text-white py-3 px-10"
                       onClick={() => {
-                        setShowModal(false);
                         handleAddTodo(newTask);
+                        setShowModal(false);
                       }}
                     >
                       Add
                     </button>
                   </div>
+                  </>
                 )}
               </div>
             </div>
@@ -183,7 +194,7 @@ const TodoList = () => {
             </div>
           )}
           <button
-            className="bg-indigo-500 text-center text-white 
+            className="bg-[#FF4F5A] text-center text-white 
         py-3 px-10 rounded-md"
             onClick={() => setShowModal(true)}
           >
